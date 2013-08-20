@@ -157,7 +157,7 @@ void WorkoutController::nextExercise() {
 	int timeStillInRest = m_timeBetweenSets + m_time.secsTo(QTime(0,0));
 
 	m_exerciseCount++;
-	m_exerciseSetCount = 1;
+	m_exerciseSetCount = 0;
 
 	m_time = QTime(0, 0);
 	m_time = m_time.addSecs(m_timeBetweenExercises - timeStillInRest);

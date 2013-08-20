@@ -3,23 +3,31 @@ BASEDIR =  $$quote($$_PRO_FILE_PWD_)
 
 device {
     CONFIG(debug, debug|release) {
-        SOURCES +=  $$quote($$BASEDIR/src/SoundManager.cpp) \
+        SOURCES +=  $$quote($$BASEDIR/src/ExerciseSet.cpp) \
+                 $$quote($$BASEDIR/src/SoundManager.cpp) \
+                 $$quote($$BASEDIR/src/Workout.cpp) \
                  $$quote($$BASEDIR/src/WorkoutController.cpp) \
                  $$quote($$BASEDIR/src/applicationui.cpp) \
                  $$quote($$BASEDIR/src/main.cpp)
 
-        HEADERS +=  $$quote($$BASEDIR/src/SoundManager.hpp) \
+        HEADERS +=  $$quote($$BASEDIR/src/ExerciseSet.hpp) \
+                 $$quote($$BASEDIR/src/SoundManager.hpp) \
+                 $$quote($$BASEDIR/src/Workout.hpp) \
                  $$quote($$BASEDIR/src/WorkoutController.hpp) \
                  $$quote($$BASEDIR/src/applicationui.hpp)
     }
 
     CONFIG(release, debug|release) {
-        SOURCES +=  $$quote($$BASEDIR/src/SoundManager.cpp) \
+        SOURCES +=  $$quote($$BASEDIR/src/ExerciseSet.cpp) \
+                 $$quote($$BASEDIR/src/SoundManager.cpp) \
+                 $$quote($$BASEDIR/src/Workout.cpp) \
                  $$quote($$BASEDIR/src/WorkoutController.cpp) \
                  $$quote($$BASEDIR/src/applicationui.cpp) \
                  $$quote($$BASEDIR/src/main.cpp)
 
-        HEADERS +=  $$quote($$BASEDIR/src/SoundManager.hpp) \
+        HEADERS +=  $$quote($$BASEDIR/src/ExerciseSet.hpp) \
+                 $$quote($$BASEDIR/src/SoundManager.hpp) \
+                 $$quote($$BASEDIR/src/Workout.hpp) \
                  $$quote($$BASEDIR/src/WorkoutController.hpp) \
                  $$quote($$BASEDIR/src/applicationui.hpp)
     }
@@ -27,12 +35,16 @@ device {
 
 simulator {
     CONFIG(debug, debug|release) {
-        SOURCES +=  $$quote($$BASEDIR/src/SoundManager.cpp) \
+        SOURCES +=  $$quote($$BASEDIR/src/ExerciseSet.cpp) \
+                 $$quote($$BASEDIR/src/SoundManager.cpp) \
+                 $$quote($$BASEDIR/src/Workout.cpp) \
                  $$quote($$BASEDIR/src/WorkoutController.cpp) \
                  $$quote($$BASEDIR/src/applicationui.cpp) \
                  $$quote($$BASEDIR/src/main.cpp)
 
-        HEADERS +=  $$quote($$BASEDIR/src/SoundManager.hpp) \
+        HEADERS +=  $$quote($$BASEDIR/src/ExerciseSet.hpp) \
+                 $$quote($$BASEDIR/src/SoundManager.hpp) \
+                 $$quote($$BASEDIR/src/Workout.hpp) \
                  $$quote($$BASEDIR/src/WorkoutController.hpp) \
                  $$quote($$BASEDIR/src/applicationui.hpp)
     }

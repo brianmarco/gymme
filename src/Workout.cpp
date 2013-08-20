@@ -1,0 +1,23 @@
+/*
+ * Workout.cpp
+ *
+ *  Created on: Aug 16, 2013
+ *      Author: brianmarco
+ */
+
+#include "Workout.hpp"
+
+namespace brianmarco {
+namespace gymme {
+
+Workout::Workout()
+:mDateTime(QDateTime::currentDateTime())
+{
+
+}
+
+Workout::~Workout() {
+}
+
+} /* namespace gymme */
+} /* namespace brianmarco */
