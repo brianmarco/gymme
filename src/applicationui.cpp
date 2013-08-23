@@ -6,6 +6,10 @@
 #include <bb/cascades/LocaleHandler>
 #include <bb/cascades/Window>
 #include <bb/cascades/Container>
+#include <bb/cascades/ColorTheme>
+#include <bb/cascades/Theme>
+#include <bb/cascades/ThemeSupport>
+#include <QDebug>
 
 using namespace bb::cascades;
 
@@ -14,7 +18,7 @@ ApplicationUI::ApplicationUI(bb::cascades::Application *app) :
 {
 	m_workoutController = new gymme::WorkoutController();
 
-    m_soundManager = new SoundManager("sounds/");
+    m_soundManager = new gymme::SoundManager("sounds/");
 
     // prepare the localization
     m_pTranslator = new QTranslator(this);
@@ -38,6 +42,7 @@ ApplicationUI::ApplicationUI(bb::cascades::Application *app) :
     // Create root object for the UI
     AbstractPane *root = qml->createRootObject<AbstractPane>();
 
+    // Disable the dummy containers (used for quick preview in QML editor
     Container *dummyHeaderContainer = root->findChild<Container*>("dummyHeaderContainer");
     Container *dummyTimeContainer = root->findChild<Container*>("dummyTimerContainer");
     Container *headerContainer = root->findChild<Container*>("headerContainer");
@@ -58,6 +63,14 @@ ApplicationUI::~ApplicationUI() {
 
 void ApplicationUI::playSound(const QString &sound) {
 	m_soundManager->play(sound);
+}
+
+bool ApplicationUI::isUsingDarkTheme() {
+	ThemeSupport *themeSupport = Application::instance()->themeSupport();
+	Theme *theme = themeSupport->theme();
+	ColorTheme *colorTheme = theme->colorTheme();
+
+	return colorTheme->style() == VisualStyle::Dark;
 }
 
 void ApplicationUI::onSystemLanguageChanged()

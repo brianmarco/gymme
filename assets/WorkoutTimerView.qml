@@ -1,9 +1,16 @@
 import bb.cascades 1.0
 
 Container {
+    property bool isUsingDarkTheme: true;
+    
+    function getBtnDefaultImageSource(type) {
+        return isUsingDarkTheme ? "asset:///icons/ic_" + type + ".png" : "asset:///icons/ic_" + type + "_black.png";
+    }
+    
     layout: DockLayout {
     
     }
+    
     Container {
         id: dummyHeaderContainer
         objectName: "dummyHeaderContainer"
@@ -23,6 +30,7 @@ Container {
             horizontalAlignment: HorizontalAlignment.Right
         }
     }
+    
     Container {
         id: dummyTimerContainer
         objectName: "dummyTimerContainer"
@@ -59,6 +67,7 @@ Container {
             textStyle.fontStyle: FontStyle.Italic
         }
     }
+    
     Container {
         id: headerContainer
         objectName: "headerContainer"
@@ -80,6 +89,7 @@ Container {
             horizontalAlignment: HorizontalAlignment.Right
         }
     }
+    
     Container {
         id: timerContainer
         objectName: "timerContainer"
@@ -165,25 +175,46 @@ Container {
             orientation: LayoutOrientation.LeftToRight
         }
         
-        bottomPadding: 40.0
+        bottomPadding: 30.0
         leftPadding: 5.0
         rightPadding: 5.0
 
         clipContentToBounds: false
        
         Container {
+            id: miscBtnContainer
+            layoutProperties: StackLayoutProperties {
+                spaceQuota: 30.0
+            }
+            ImageToggleButton {
+                horizontalAlignment: HorizontalAlignment.Center
+                verticalAlignment: VerticalAlignment.Center
+                
+                scaleX: 0.5
+                scaleY: 0.4
+                
+                imageSourceChecked: "asset:///icons/auto_glow.png"
+                imageSourceDefault: "asset:///icons/auto_grey.png"
+                imageSourcePressedChecked: "asset:///icons/auto_grey.png"
+                imageSourcePressedUnchecked: "asset:///icons/auto_grey.png"
+                imageSourceDisabledChecked: "asset:///icons/auto_grey.png"
+                imageSourceDisabledUnchecked: "asset:///icons/auto_grey.png"
+            }
+        }
+        
+        Container {
             id: timerBtnContainer
 
             clipContentToBounds: false
 
             layoutProperties: StackLayoutProperties {
-                spaceQuota: 60.0
+                spaceQuota: 40.0
             }
 
             ImageButton {
                 id: timerBtn
 
-                defaultImageSource: "asset:///icons/ic_play.png"
+                defaultImageSource: getBtnDefaultImageSource("play");
                 pressedImageSource: "asset:///icons/ic_play_grey.png"
 
                 gestureHandlers: [
@@ -202,16 +233,42 @@ Container {
 
                 scaleX: 0.8
                 scaleY: 0.8
+                
+                animations: [
+                   SequentialAnimation {
+                       id: pulseTimerBtn
+                       repeatCount: AnimationRepeatCount.Forever
+                       animations: [
+                           ScaleTransition {
+                               fromX: 0.8
+                               fromY: 0.8
+                               toX: 0.75
+                               toY: 0.75
+                               duration: 500
+                           },
+                           ScaleTransition {
+                               fromX: 0.75
+                               fromY: 0.75
+                               toX: 0.8
+                               toY: 0.8
+                               duration: 500
+                           }
+                       ] 
+                   } 
+                ]
+                     
                 function exerciseSetStart() {
                     app.playSound("beep.wav");
-
+                    
                     pulseActivityLabel.play();
+                    pulseTimerBtn.play();
+                    
                     timeLabel.textStyle.color = Color.Green;
                     workoutController.stopRest();
                     workoutController.start();
                     nextSetBtn.setEnabled(false);
 
-                    timerBtn.setDefaultImageSource("asset:///icons/ic_stop.png")
+                    timerBtn.setDefaultImageSource(getBtnDefaultImageSource("stop"))
                     timerBtn.setPressedImageSource("asset:///icons/ic_stop_grey.png")
                 }
 
@@ -223,9 +280,11 @@ Container {
                     timeLabel.textStyle.color = Color.Blue;
                     nextSetBtn.setEnabled(true);
 
-                    timerBtn.setDefaultImageSource("asset:///icons/ic_play.png")
+                    timerBtn.setDefaultImageSource(getBtnDefaultImageSource("play"))
                     timerBtn.setPressedImageSource("asset:///icons/ic_play_grey.png")
                 }
+                
+
             }
         }
 
@@ -234,12 +293,13 @@ Container {
 
             clipContentToBounds: false
             layoutProperties: StackLayoutProperties {
-                spaceQuota: 40.0
+                spaceQuota: 30.0
             }
+            rightPadding: 50.0
             ImageButton {
                 id: nextSetBtn
 
-                defaultImageSource: "asset:///icons/ic_next.png"
+                defaultImageSource: getBtnDefaultImageSource("next");
                 pressedImageSource: "asset:///icons/ic_next_grey.png"
                 disabledImageSource: "asset:///icons/ic_next_disabled.png"
 
@@ -253,7 +313,7 @@ Container {
                     }
                 ]
                 scaleX: 0.5
-                scaleY: 0.5
+                scaleY: 0.3
                 horizontalAlignment: HorizontalAlignment.Center
             }
         }

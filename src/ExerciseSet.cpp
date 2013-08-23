@@ -7,8 +7,7 @@
 
 #include "ExerciseSet.hpp"
 
-namespace brianmarco {
-namespace gymme {
+using namespace gymme;
 
 ExerciseSet::ExerciseSet()
 :mWorkingTime(QTime(0, 0)),
@@ -20,6 +19,3 @@ ExerciseSet::ExerciseSet()
 
 ExerciseSet::~ExerciseSet() {
 }
-
-} /* namespace gymme */
-} /* namespace brianmarco */

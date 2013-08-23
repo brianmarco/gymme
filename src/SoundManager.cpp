@@ -22,6 +22,8 @@
 #include <QDir>
 #include <qdebug.h>
 
+using namespace gymme;
+
 // Error message function for ALUT.
 static void reportALUTError(ALenum error)
 {

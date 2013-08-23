@@ -7,8 +7,7 @@
 
 #include "Workout.hpp"
 
-namespace brianmarco {
-namespace gymme {
+using namespace gymme;
 
 Workout::Workout()
 :mDateTime(QDateTime::currentDateTime())
@@ -18,6 +17,3 @@ Workout::Workout()
 
 Workout::~Workout() {
 }
-
-} /* namespace gymme */
-} /* namespace brianmarco */

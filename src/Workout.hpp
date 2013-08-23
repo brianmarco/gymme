@@ -13,7 +13,6 @@
 
 #include "ExerciseSet.hpp"
 
-namespace brianmarco {
 namespace gymme {
 
 class Workout {
@@ -31,5 +30,4 @@ private:
 };
 
 } /* namespace gymme */
-} /* namespace brianmarco */
 #endif /* WORKOUT_HPP_ */

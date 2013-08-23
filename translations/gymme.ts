@@ -2,24 +2,49 @@
 <!DOCTYPE TS>
 <TS version="2.0">
 <context>
-    <name>main</name>
+    <name>WorkoutTimerView</name>
     <message>
-        <location filename="../assets/main.qml" line="7"/>
-        <source>Tab 1</source>
+        <location filename="../assets/WorkoutTimerView.qml" line="25"/>
+        <source>9:00am</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/main.qml" line="11"/>
-        <source>First tab</source>
+        <location filename="../assets/WorkoutTimerView.qml" line="29"/>
+        <source>09:00</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/main.qml" line="17"/>
-        <source>Tab 2</source>
+        <location filename="../assets/WorkoutTimerView.qml" line="47"/>
+        <source>Excerise #%1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/main.qml" line="21"/>
+        <location filename="../assets/WorkoutTimerView.qml" line="50"/>
+        <location filename="../assets/WorkoutTimerView.qml" line="110"/>
+        <source>-</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../assets/WorkoutTimerView.qml" line="53"/>
+        <location filename="../assets/WorkoutTimerView.qml" line="114"/>
+        <source>Set #%1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../assets/WorkoutTimerView.qml" line="107"/>
+        <source>Exercise #%1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../assets/WorkoutTimerView.qml" line="144"/>
+        <source>%1</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>WorkoutsView</name>
+    <message>
+        <location filename="../assets/WorkoutsView.qml" line="5"/>
         <source>Second tab</source>
         <translation type="unfinished"></translation>
     </message>

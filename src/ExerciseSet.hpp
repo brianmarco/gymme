@@ -10,7 +10,6 @@
 
 #include <QTime>
 
-namespace brianmarco {
 namespace gymme {
 
 class ExerciseSet {
@@ -32,5 +31,4 @@ private:
 };
 
 } /* namespace gymme */
-} /* namespace brianmarco */
 #endif /* EXERCISESET_HPP_ */

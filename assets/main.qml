@@ -1,26 +1,30 @@
 import bb.cascades 1.0
 
 TabbedPane {
-    showTabsOnActionBar: true
-    Tab { //First tab
-        // Localized text with the dynamic translation and locale updates support
-        title: qsTr("Tab 1") + Retranslate.onLocaleOrLanguageChanged
+    //showTabsOnActionBar: true
+    
+    Tab {
+        title: "Timer"
+        imageSource: "asset:///icons/icon_117.png"
         Page {
-            Container {
-                Label {
-                    text: qsTr("First tab") + Retranslate.onLocaleOrLanguageChanged
+            content: WorkoutTimerView {
+                isUsingDarkTheme: app.isUsingDarkTheme();
+            }
+            actions: [
+                ActionItem {
+                    title: "Edit"
+                    imageSource: "asset:///icons/ic_edit.png"
                 }
+            ]
+        }
+    }
+    Tab {
+        title: "Workouts"
+        imageSource: "asset:///icons/ic_view_list.png"
+        Page {
+            content: WorkoutsView {
+                
             }
         }
-    } //End of first tab
-    Tab { //Second tab
-        title: qsTr("Tab 2") + Retranslate.onLocaleOrLanguageChanged
-        Page {
-            Container {
-                Label {
-                    text: qsTr("Second tab") + Retranslate.onLocaleOrLanguageChanged
-                }
-            }
-        }
-    } //End of second tab
+    }
 }

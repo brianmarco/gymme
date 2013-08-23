@@ -28,6 +28,8 @@
 // The number of max number of sound sources.
 #define SOUNDMANAGER_MAX_NBR_OF_SOURCES 32
 
+namespace gymme {
+
 /**
  * SoundManager
  *
@@ -85,5 +87,5 @@ private:
     // Sound sources.
     ALuint mSoundSources[SOUNDMANAGER_MAX_NBR_OF_SOURCES];
 };
-
+}
 #endif //_SOUNDMANAGER_H

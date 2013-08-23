@@ -17,12 +17,6 @@ namespace bb
 
 class QTranslator;
 
-/*!
- * @brief Application object
- *
- *
- */
-
 class ApplicationUI : public QObject
 {
     Q_OBJECT
@@ -32,6 +26,7 @@ public:
     ~ApplicationUI();
 
     Q_INVOKABLE void playSound(const QString &sound);
+    Q_INVOKABLE bool isUsingDarkTheme();
 
 private slots:
     void onSystemLanguageChanged();
@@ -42,7 +37,7 @@ private:
 
     gymme::WorkoutController* m_workoutController;
 
-    SoundManager* m_soundManager;
+    gymme::SoundManager* m_soundManager;
 };
 
 #endif /* ApplicationUI_HPP_ */
