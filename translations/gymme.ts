@@ -4,39 +4,39 @@
 <context>
     <name>WorkoutTimerView</name>
     <message>
-        <location filename="../assets/WorkoutTimerView.qml" line="25"/>
+        <location filename="../assets/WorkoutTimerView.qml" line="24"/>
         <source>9:00am</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/WorkoutTimerView.qml" line="29"/>
+        <location filename="../assets/WorkoutTimerView.qml" line="28"/>
         <source>09:00</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/WorkoutTimerView.qml" line="47"/>
+        <location filename="../assets/WorkoutTimerView.qml" line="44"/>
         <source>Excerise #%1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/WorkoutTimerView.qml" line="50"/>
-        <location filename="../assets/WorkoutTimerView.qml" line="110"/>
+        <location filename="../assets/WorkoutTimerView.qml" line="47"/>
+        <location filename="../assets/WorkoutTimerView.qml" line="104"/>
         <source>-</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/WorkoutTimerView.qml" line="53"/>
-        <location filename="../assets/WorkoutTimerView.qml" line="114"/>
+        <location filename="../assets/WorkoutTimerView.qml" line="50"/>
+        <location filename="../assets/WorkoutTimerView.qml" line="108"/>
         <source>Set #%1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/WorkoutTimerView.qml" line="107"/>
+        <location filename="../assets/WorkoutTimerView.qml" line="101"/>
         <source>Exercise #%1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/WorkoutTimerView.qml" line="144"/>
+        <location filename="../assets/WorkoutTimerView.qml" line="138"/>
         <source>%1</source>
         <translation type="unfinished"></translation>
     </message>

@@ -1,7 +1,7 @@
 import bb.cascades 1.0
 
 TabbedPane {
-    //showTabsOnActionBar: true
+    showTabsOnActionBar: true
     
     Tab {
         title: "Timer"

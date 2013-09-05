@@ -25,7 +25,14 @@ public:
     ApplicationUI(bb::cascades::Application *app);
     ~ApplicationUI();
 
+    /**
+     * Play a sound using the internal SoundManager.
+     */
     Q_INVOKABLE void playSound(const QString &sound);
+
+    /**
+     * Convenience method for QML code to determine if the Dark theme is used.
+     */
     Q_INVOKABLE bool isUsingDarkTheme();
 
 private slots:
@@ -34,9 +41,7 @@ private slots:
 private:
     QTranslator* m_pTranslator;
     bb::cascades::LocaleHandler* m_pLocaleHandler;
-
     gymme::WorkoutController* m_workoutController;
-
     gymme::SoundManager* m_soundManager;
 };
 

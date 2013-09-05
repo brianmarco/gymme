@@ -5,15 +5,19 @@
  *      Author: brianmarco
  */
 
-#include <QDebug>
-
 #include <unistd.h>
+
+#include <QDebug>
 
 #include "WorkoutController.hpp"
 
 using namespace gymme;
 
 WorkoutController::WorkoutController() {
+	m_currentWorkout = NULL;
+	m_currentExercise = NULL;
+	m_currentExerciseSet = NULL;
+
 	m_currentActivity = NILL;
 	m_prevActivity = NILL;
 
@@ -21,6 +25,8 @@ WorkoutController::WorkoutController() {
 	m_exerciseSetCount = 0;
 
 	m_timer = new QTimer(this);
+	m_elapsedTimer = QElapsedTimer();
+
 	m_time = QTime(0, 0);
 	m_totalTime = QTime(0,0);
 	m_bufferTime = QTime(0,0);
@@ -36,6 +42,10 @@ WorkoutController::WorkoutController() {
 }
 
 WorkoutController::~WorkoutController() {
+	delete m_timer;
+	delete m_currentWorkout;
+	delete m_currentExercise;
+	delete m_currentExerciseSet;
 }
 
 int WorkoutController::exerciseCount() {
@@ -94,10 +104,26 @@ void WorkoutController::start() {
 		return;
 	}
 
+	if (m_currentWorkout == NULL) {
+		m_currentWorkout = new Workout();
+	}
+
+	if (m_currentExercise == NULL) {
+		m_currentExercise = new Exercise();
+		m_currentExercise->setExerciseNum(m_exerciseCount);
+		m_currentWorkout->addExercise(m_currentExercise);
+	}
+
+	m_currentExerciseSet = new ExerciseSet();
+	m_currentExercise->addExerciseSet(m_currentExerciseSet);
+
 	m_time = QTime(0, 0);
+	m_elapsedTimer.start();
 	m_timer->start(TIMER_INTERVAL);
 
 	m_exerciseSetCount++;
+	m_currentExerciseSet->setExerciseSetNum(m_exerciseSetCount);
+
 	emit exerciseSetCountChanged();
 
 	m_currentActivity = WORKING;
@@ -122,9 +148,9 @@ void WorkoutController::togglePause() {
 }
 
 void WorkoutController::stop() {
-	qDebug() << "Exercise Set Duration:" << this->currentTimeAsQString();
 	m_timer->stop();
-
+	m_currentExerciseSet->setWorkingTime(m_elapsedTimer.elapsed());
+	debugExerciseSet(m_currentExerciseSet);
 }
 
 void WorkoutController::buffer() {
@@ -144,6 +170,7 @@ void WorkoutController::startRest() {
 
 	m_currentActivity = RESTING;
 	m_time = QTime(0, 0, m_timeBetweenSets);
+	m_elapsedTimer.start();
 	m_timer->start(TIMER_INTERVAL);
 
 	emit activityChanged();
@@ -151,6 +178,13 @@ void WorkoutController::startRest() {
 
 void WorkoutController::stopRest() {
 	m_timer->stop();
+
+	if (m_currentExerciseSet == NULL) {
+		return;
+	}
+
+	m_currentExerciseSet->setRestingTime(m_elapsedTimer.elapsed());
+	debugExerciseSet(m_currentExerciseSet);
 }
 
 void WorkoutController::nextExercise() {
@@ -161,6 +195,13 @@ void WorkoutController::nextExercise() {
 
 	m_time = QTime(0, 0);
 	m_time = m_time.addSecs(m_timeBetweenExercises - timeStillInRest);
+
+	Exercise* newExercise = new Exercise();
+	newExercise->setExerciseNum(m_exerciseCount);
+
+	m_currentWorkout->addExercise(newExercise);
+	m_currentExercise = newExercise;
+	m_currentExerciseSet = NULL;
 
 	emit exerciseCountChanged();
 	emit exerciseSetCountChanged();
@@ -190,4 +231,25 @@ void WorkoutController::timerIntervalPassed() {
     	emit activityChanged();
     	emit nowWastingTime();
 	}
+}
+
+void WorkoutController::debugExerciseSet(ExerciseSet* exerciseSet) {
+	QString debugMsg = "gymme::";
+
+	QString workoutStr = m_currentWorkout->dateTime().toString();
+	QString exerciseStr = QString::number(m_currentExercise->exerciseNum());
+
+	debugMsg.append(workoutStr);
+	debugMsg.append(",");
+	debugMsg.append(exerciseStr);
+	debugMsg.append(",");
+	debugMsg.append(QString::number(exerciseSet->exerciseSetNum()));
+	debugMsg.append(",");
+	debugMsg.append(QString::number(exerciseSet->workingTime()));
+	debugMsg.append(",");
+	debugMsg.append(QString::number(exerciseSet->restingTime()));
+	debugMsg.append(",");
+	debugMsg.append(QString::number(exerciseSet->wastingTime()));
+
+	qDebug() << debugMsg;
 }

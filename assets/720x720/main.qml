@@ -1,7 +1,7 @@
 import bb.cascades 1.0
 
 TabbedPane {
-    //showTabsOnActionBar: true
+    showTabsOnActionBar: true
     
     Tab {
         title: "Timer"
@@ -14,6 +14,10 @@ TabbedPane {
                 ActionItem {
                     title: "Edit"
                     imageSource: "asset:///icons/ic_edit.png"
+                },
+                ActionItem {
+                    title: "Finish Workout"
+                    imageSource: "asset:///icons/icon_153.png"
                 }
             ]
         }

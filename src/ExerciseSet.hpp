@@ -17,17 +17,23 @@ public:
 	ExerciseSet();
 	virtual ~ExerciseSet();
 
-	QTime workingTime();
-	QTime restingTime();
-	QTime wastingTime();
+	int exerciseSetNum();
 
-	void setWorkingTime(QTime workingTime);
-	void setRestingTime(QTime restingTime);
-	void setWastingTime(QTime wastingTime);
+	int workingTime();
+	int restingTime();
+	int wastingTime();
+
+	void setExerciseSetNum(int exerciseSetNum);
+
+	void setWorkingTime(int workingTime);
+	void setRestingTime(int restingTime);
+	void setWastingTime(int wastingTime);
 private:
-	QTime mWorkingTime;
-	QTime mRestingTime;
-	QTime mWastingTime;
+	int m_exerciseSetNum;
+
+	int m_workingTime;
+	int m_restingTime;
+	int m_wastingTime;
 };
 
 } /* namespace gymme */

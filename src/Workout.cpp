@@ -10,10 +10,29 @@
 using namespace gymme;
 
 Workout::Workout()
-:mDateTime(QDateTime::currentDateTime())
+	:m_dateTime(QDateTime::currentDateTime()),
+	 m_exercises(QList<Exercise*>())
 {
-
 }
 
 Workout::~Workout() {
+}
+
+QDateTime Workout::dateTime() {
+	return m_dateTime;
+}
+
+QList<Exercise*> Workout::exercises() {
+	return m_exercises;
+}
+
+void Workout::addExercise(Exercise* exercise) {
+	m_exercises << exercise;
+}
+
+QVariant Workout::workoutData() {
+
+	QVariant result;
+
+	return result;
 }

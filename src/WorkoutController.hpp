@@ -11,8 +11,10 @@
 #include <QObject>
 #include <QTime>
 #include <QTimer>
+#include <QElapsedTimer>
 
 #include "SoundManager.hpp"
+#include "Workout.hpp"
 
 namespace gymme {
 
@@ -77,12 +79,20 @@ private:
 	int m_exerciseSetCount;
 
 	QTimer* m_timer;
+	QElapsedTimer m_elapsedTimer;
+
 	QTime m_time;
 	QTime m_totalTime;
 	QTime m_bufferTime;
 
 	int m_timeBetweenSets;
 	int m_timeBetweenExercises;
+
+	Workout* m_currentWorkout;
+	Exercise* m_currentExercise;
+	ExerciseSet* m_currentExerciseSet;
+
+	void debugExerciseSet(ExerciseSet* exerciseSet);
 };
 }
 

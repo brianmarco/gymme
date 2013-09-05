@@ -10,8 +10,9 @@
 
 #include <QDateTime>
 #include <QList>
+#include <QVariant>
 
-#include "ExerciseSet.hpp"
+#include "Exercise.hpp"
 
 namespace gymme {
 
@@ -20,13 +21,15 @@ public:
 	Workout();
 	virtual ~Workout();
 
-	const QList<ExerciseSet>* exerciseSets();
-	const QDateTime* dateTime();
+	QList<Exercise*> exercises();
+	QDateTime dateTime();
 
-	void addExerciseSet(const ExerciseSet* exerciseSet);
+	void addExercise(Exercise* exercise);
+
+	QVariant workoutData();
 private:
-	QDateTime mDateTime;
-	QList<ExerciseSet> mExerciseSets;
+	QDateTime m_dateTime;
+	QList<Exercise*> m_exercises;
 };
 
 } /* namespace gymme */
