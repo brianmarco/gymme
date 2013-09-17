@@ -78,6 +78,9 @@ QString WorkoutController::currentActivity() {
 	case RESTING:
 		activityStr = "Resting";
 		break;
+	case INBETWEEN:
+		activityStr = "Next Exercise";
+		break;
 	case PAUSED:
 		activityStr = "Paused";
 		break;
@@ -203,21 +206,24 @@ void WorkoutController::nextExercise() {
 	m_currentExercise = newExercise;
 	m_currentExerciseSet = NULL;
 
+	m_currentActivity = INBETWEEN;
+
 	emit exerciseCountChanged();
 	emit exerciseSetCountChanged();
 	emit timeChanged();
+	emit activityChanged();
 }
 
 void WorkoutController::timerIntervalPassed() {
 	if (m_currentActivity == WORKING || m_currentActivity == WASTING) {
     	m_time = m_time.addMSecs(TIMER_INTERVAL);
 
-    	// Effectively beep every three seconds
+    	// Beep every three seconds
     	if (m_currentActivity == WASTING && ((m_time.second() * 1000 + m_time.msec()) % 3000 == 0)) {
     		emit nowWastingTime();
     	}
 	}
-	else if (m_currentActivity == RESTING) {
+	else if (m_currentActivity == RESTING || m_currentActivity == INBETWEEN) {
 		m_time = m_time.addMSecs(-1 * TIMER_INTERVAL);
 	}
 

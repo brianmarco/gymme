@@ -67,6 +67,7 @@ private:
 	enum Activity {
 		NILL,
 		RESTING,
+		INBETWEEN,
 		PAUSED,
 		WORKING,
 		WASTING
